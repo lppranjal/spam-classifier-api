@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
 
@@ -7,6 +8,15 @@ model = joblib.load('app/model.joblib')
 
 # FastAPI app initialization
 app = FastAPI()
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # you can replace "*" with your Angular domain(s) for security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Request body schema
 class Message(BaseModel):
