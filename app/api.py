@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import pathlib
 
 # Load the model pipeline
 model = joblib.load('app/model.joblib')
@@ -33,3 +36,9 @@ def predict_spam(message: Message):
         "probability": float(probability)
     }
 
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+@app.get("/", include_in_schema=False)
+def ui():
+    index_path = pathlib.Path("app/static/index.html")
+    return FileResponse(index_path)
