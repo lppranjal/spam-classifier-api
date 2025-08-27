@@ -21,9 +21,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve static Angular files
-app.mount("/", StaticFiles(directory="app/static", html=True), name="static")
-
 # Request body schema
 class Message(BaseModel):
     text: str
@@ -38,6 +35,9 @@ def predict_spam(message: Message):
         "result": result,
         "probability": float(probability)
     }
+
+# Serve static Angular files
+app.mount("/static", StaticFiles(directory="app/static", html=True), name="static")
 
 # Serve Angular index.html for root and SPA routes
 @app.get("/{full_path:path}")
