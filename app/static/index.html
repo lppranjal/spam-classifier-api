@@ -2,12 +2,34 @@
 <html lang="en" data-beasties-container>
 <head>
   <meta charset="utf-8">
-  <title>SpamUi</title>
-  <base href="/">
+  <title>Detect Spam</title>
+  <base href="/static/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="/static/styles-5INURTSO.css"></head>
+  <style>
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14px;
+      color: #888;
+      background: transparent;
+      pointer-events: none;
+    }
+    .footer span {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+  </style>
+<link rel="stylesheet" href="styles-5INURTSO.css"></head>
 <body>
   <app-root></app-root>
-<script src="/static/polyfills-5CFQRCPP.js" type="module"></script><script src="/static/main-OZVR7WJE.js" type="module"></script></body>
+  <div class="footer">
+    <span>Developed by Pranjal Mishra</span>
+  </div>
+<script src="polyfills-5CFQRCPP.js" type="module"></script><script src="main-OZVR7WJE.js" type="module"></script></body>
 </html>
